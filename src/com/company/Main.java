@@ -4,22 +4,23 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NullPointerException {
 
         Map player1Map = new Map();
         Map player2Map = new Map();
-        boolean done = false;
 
-        Scanner sc = new Scanner(System.in);
+        Input in = new Input(null);
+        GameStatus gs = GameStatus.Initialization;
 
         do {
             System.out.println("       Игрок 1        ");
             player1Map.drawMap();
+            System.out.println();
             System.out.println("       Игрок 2        ");
             player2Map.drawMap();
-            int c = sc.nextInt();
-            done = c == 0;
-        } while (!done);
+            in.process(gs);
+
+        } while (!in.isDone());
 
     }
 }
